@@ -1,0 +1,21 @@
+#body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calculator-box {
+    border: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+#display-box {
+    height: 100px;
+    width: 80%;
+    border: 2px solid #000;
+}
