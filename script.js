@@ -20,10 +20,9 @@ for (const button of buttonOperator) {
 }
 
 buttonClear.addEventListener('click',() => {
-    firstNum = '';
-    secondNum = '';
+    firstNum = secondNum = '';
     operatorValue = undefined;
-    display.textContent = '';
+    display.textContent = answerDisplay.textContent = '';
 })
 
 // calculator operation functions
@@ -43,14 +42,12 @@ const operation = {
     },
 }
 
-// console.log(operate(+'-2',+'9','add'));
-
 function operate(a,b,operator) {
     switch(operator) {
-        case 'add': return operation.add(a,b);
-        case 'subtract': return operation.subtract(a,b);
-        case 'multiply': return operation.multiply(a,b);
-        case 'divide': return operation.divide(a,b);
+        case '+': return operation.add(a,b);
+        case '-': return operation.subtract(a,b);
+        case 'x': return operation.multiply(a,b);
+        case '÷': return operation.divide(a,b);
     }
 }
 
@@ -89,7 +86,6 @@ function storeValue(e) {
     }
     if (firstNum) {
     operatorValue = e.target.id;
-    console.log(firstNum,operatorValue);
     dot.addEventListener('click',displayInBox);
     }
 }
