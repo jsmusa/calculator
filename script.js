@@ -5,6 +5,7 @@ const buttonOperator = buttonBox.getElementsByClassName('button operator');
 const buttonClear = buttonBox.querySelector('.clear');
 const display = document.createElement('div');
 const answerDisplay = document.createElement('div');
+const dot = document.querySelector('#dot');
 let secondNum = '';
 let firstNum = '';
 let operatorValue;
@@ -68,6 +69,11 @@ function displayInBox(e) {
         secondNum += e.target.textContent;
         display.textContent =`${firstNum} ${operatorValue} ${secondNum}`;
     }
+
+    if (e.target.id === 'dot') {
+        e.target.removeEventListener('click',displayInBox);
+    }
+
     displayBox.appendChild(display);
 }
 
@@ -84,5 +90,6 @@ function storeValue(e) {
     if (firstNum) {
     operatorValue = e.target.id;
     console.log(firstNum,operatorValue);
+    dot.addEventListener('click',displayInBox);
     }
 }
