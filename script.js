@@ -2,6 +2,7 @@ const buttonBox = document.getElementById('button-box');
 const displayBox = document.getElementById('display-box');
 const buttonNumber = buttonBox.getElementsByClassName('button number');
 const buttonOperator = buttonBox.getElementsByClassName('button operator');
+const buttonClear = buttonBox.querySelector('.clear');
 const display = document.createElement('div');
 const answerDisplay = document.createElement('div');
 let secondNum = '';
@@ -16,6 +17,13 @@ for (const button of buttonNumber) {
 for (const button of buttonOperator) {
     button.addEventListener('click',storeValue)
 }
+
+buttonClear.addEventListener('click',() => {
+    firstNum = '';
+    secondNum = '';
+    operatorValue = undefined;
+    display.textContent = '';
+})
 
 // calculator operation functions
 const operation = {
