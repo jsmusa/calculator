@@ -66,8 +66,8 @@ function displayInBox(e) {
 function storeValue(e) {
     // operate when secondNum is defined and an operator button is clicked
     if (secondNum) {
-        displayValue = operate(+firstNum,+secondNum,operatorValue);
-        console.log(firstNum,secondNum,displayValue,operatorValue);
+        answer = operate(+firstNum,+secondNum,operatorValue);
+        console.log(firstNum,secondNum,answer,operatorValue);
         firstNum = answer;
         operatorValue = e.target.id;
         secondNum = '';        
