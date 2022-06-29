@@ -3,8 +3,8 @@ const displayBox = document.getElementById('display-box');
 const buttonNumber = buttonBox.getElementsByClassName('button number');
 const buttonOperator = buttonBox.getElementsByClassName('button operator');
 const display = document.createElement('div');
-let displayValue = '';
-let secondNum;
+let displayValue;
+let secondNum = '';
 let firstNum = '';
 let operatorValue;
 let answer;
@@ -47,29 +47,26 @@ function operate(a,b,operator) {
 
 // displays value of buttonNumber clicked in display box
 function displayInBox(e) {
-    if (answer && secondNum) {
-        displayValue = '';
-        answer = '';
+    if (!operatorValue) {
+        firstNum += e.target.textContent;
+        display.textContent = firstNum;
+        console.log(firstNum);
+    } else {
+        secondNum += e.target.textContent;
+        display.textContent = secondNum;
     }
-    displayValue += e.target.textContent;
-    display.textContent = displayValue;
     displayBox.appendChild(display);
 }
 
 // store values when operator button is clicked
 function storeValue(e) {
-    if (firstNum === '') {
-        operatorValue = e.target.id;
-        console.log(operatorValue);
+    if (secondNum) {
+        displayValue = operate(+firstNum,+secondNum,operatorValue);
+        console.log(firstNum,secondNum,displayValue,operatorValue);
         firstNum = displayValue;
-        displayValue = '';
-    } else {
-        secondNum = displayValue;
-        console.log(firstNum,secondNum,operatorValue);
-        answer = operate(+firstNum,+secondNum,operatorValue);
-        displayValue = answer;
-        firstNum = '';
-        console.log(displayValue);
-        display.textContent = displayValue;
+        operatorValue = e.target.id;
+        secondNum = '';
     }
+    operatorValue = e.target.id;
+    console.log(firstNum,operatorValue);
 }
