@@ -3,6 +3,7 @@ const displayBox = document.getElementById('display-box');
 const buttonNumber = buttonBox.getElementsByClassName('button number');
 const buttonOperator = buttonBox.getElementsByClassName('button operator');
 const display = document.createElement('div');
+const answerDisplay = document.createElement('div');
 let secondNum = '';
 let firstNum = '';
 let operatorValue;
@@ -67,11 +68,13 @@ function storeValue(e) {
     // operate when secondNum is defined and an operator button is clicked
     if (secondNum) {
         answer = operate(+firstNum,+secondNum,operatorValue);
-        console.log(firstNum,secondNum,answer,operatorValue);
-        firstNum = answer;
-        operatorValue = e.target.id;
-        secondNum = '';        
+        if (typeof answer === 'number') firstNum = answer;
+        secondNum = '';
+        answerDisplay.textContent = answer;
+        displayBox.appendChild(answerDisplay);        
     }
+    if (firstNum) {
     operatorValue = e.target.id;
     console.log(firstNum,operatorValue);
+    }
 }
