@@ -13,6 +13,7 @@ let answer;
 
 for (const button of buttonNumber) {
     button.addEventListener('click', displayInBox);
+    
 }
 
 for (const button of buttonOperator) {
@@ -77,14 +78,14 @@ function displayInBox(e) {
 // store values when operator button is clicked
 function storeValue(e) {
     // operate when secondNum is defined and an operator button is clicked
-    if (secondNum) {
+    if (secondNum && secondNum !== '.') {
         answer = operate(+firstNum,+secondNum,operatorValue);
         if (typeof answer === 'number') firstNum = answer;
         secondNum = '';
         answerDisplay.textContent = answer;
         displayBox.appendChild(answerDisplay);        
     }
-    if (firstNum) {
+    if (firstNum && firstNum !== '.' && secondNum !== '.') {
     operatorValue = e.target.id;
     dot.addEventListener('click',displayInBox);
     }
