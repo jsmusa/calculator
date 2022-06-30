@@ -8,14 +8,48 @@
 
 #calculator-box {
     border: 2px solid #000;
+    border-radius: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
+    width: 250px;
+    gap: 20px;
+    aspect-ratio: 9/16;
 }
 
 #display-box {
-    height: 100px;
+    height: 80px;
     width: 80%;
     border: 2px solid #000;
+}
+
+#button-box {
+    display: flex;
+    flex: 1;
+    gap: 5px;
+}
+
+#number-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    gap: 8px;
+}
+
+#operator-buttons {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#number-buttons > .button {
+    width: 30%;
+    height: auto;
+}
+
+.button.operator, .button.clear {
+    height: 15%;
+    border: 1px #000 solid;
 }
