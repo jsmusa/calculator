@@ -65,7 +65,7 @@ function displayInBox(e) {
         display.textContent = firstNum;
     } else {
         secondNum += e.target.textContent;
-        display.textContent =`${firstNum} ${operatorValue} ${secondNum}`;
+        display.textContent +=`${e.target.textContent}`;
     }
 
     if (e.target.id === 'dot') {
@@ -83,10 +83,14 @@ function storeValue(e) {
         if (typeof answer === 'number') firstNum = answer;
         secondNum = '';
         answerDisplay.textContent = answer;
-        displayBox.appendChild(answerDisplay);        
+        // displayBox.appendChild(answerDisplay);        
     }
+
     if (firstNum && firstNum !== '.' && secondNum !== '.') {
     operatorValue = e.target.id;
+    display.textContent =`${firstNum} ${operatorValue} `;
+    
+    // adds dot button for second number
     dot.addEventListener('click',displayInBox);
     }
 }
