@@ -5,7 +5,6 @@ const buttonOperator = buttonBox.getElementsByClassName('button operator');
 const buttonClear = buttonBox.querySelector('.clear');
 const display = document.createElement('div');
 const answerDisplay = document.createElement('div');
-const dot = document.querySelector('#dot');
 let array = [];
 let arrayTwo = [];
 let secondNum;
@@ -97,10 +96,11 @@ function storeValue(e) {
 
 function numberWrite(array,event) {
     // prevents more than one dot from being included
-    if (array.includes('.') && event.target.id === 'dot') {
+    if (array.includes('.') && event.target.id === 'dot' ||
+    array.includes('.') && event.key === '.') {
         return array.join('');
     }
-
+    
     // backspace function
     if (event.target.id === 'backspace') {
         array.pop();
@@ -112,7 +112,8 @@ function numberWrite(array,event) {
         array.pop();
     }
     
-    array.push(event.key) || array.push(event.target.textContent);
+    if (event.key) array.push(event.key)
+    else array.push(event.target.textContent);
     
     // adds 0 to the start if decimal point is the first in the array
     if (array[0] === '.') {
