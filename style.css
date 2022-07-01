@@ -50,7 +50,7 @@
     border-radius: 5%;
 }
 
-.button.operator, .button.clear {
+.button.operator, .button.clear, .button#backspace {
     height: 15%;
     border-radius: 50%;
 }
