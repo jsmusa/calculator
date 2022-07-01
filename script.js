@@ -106,7 +106,7 @@ function numberWrite(array,event) {
     }
     
     // backspace function
-    if (event.target.id === 'backspace') {
+    if (event.target.id === 'backspace' || event.key === 'Backspace') {
         array.pop();
         return array.join('');
     }
