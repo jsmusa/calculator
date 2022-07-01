@@ -96,6 +96,12 @@ function numberWrite(array,event) {
         return array.join('');
     }
 
+    // backspace function
+    if (event.target.id === 'backspace') {
+        array.pop();
+        return array.join('');
+    }
+
     // doesn't allow numbers that start with 0 unless it has a decimal point
     if (array[0] === '0' && !array.includes('.')) {
         array.pop();
