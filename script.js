@@ -21,6 +21,11 @@ for (const button of buttonOperator) {
     button.addEventListener('click',storeValue)
 }
 
+document.addEventListener('keypress', (e) => {
+    const key = document.querySelector(`button[data-key='${e.key}']`);
+    if (key) displayInBox(e);
+})
+
 buttonClear.addEventListener('click',() => {
     firstNum = secondNum = null;
     operatorValue = null;
@@ -107,7 +112,7 @@ function numberWrite(array,event) {
         array.pop();
     }
     
-    array.push(event.target.textContent);
+    array.push(event.key) || array.push(event.target.textContent);
     
     // adds 0 to the start if decimal point is the first in the array
     if (array[0] === '.') {
