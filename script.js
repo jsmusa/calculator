@@ -20,9 +20,11 @@ for (const button of buttonOperator) {
     button.addEventListener('click',storeValue)
 }
 
-document.addEventListener('keypress', (e) => {
-    const key = document.querySelector(`button[data-key='${e.key}']`);
-    if (key) displayInBox(e);
+document.addEventListener('keydown', (e) => {
+    const keyNumber = document.querySelector(`.number[data-key='${e.key}']`);
+    const keyOperator = document.querySelector(`.operator[data-key='${e.key}']`);
+    if (keyNumber) displayInBox(e);
+    if (keyOperator) storeValue(e);
 })
 
 buttonClear.addEventListener('click',() => {
@@ -54,8 +56,10 @@ function operate(a,b,operator) {
     switch(operator) {
         case '+': return operation.add(a,b);
         case '-': return operation.subtract(a,b);
-        case 'x': return operation.multiply(a,b);
-        case '÷': return operation.divide(a,b);
+        case 'x': 
+        case '*': return operation.multiply(a,b);
+        case '÷':
+        case '/': return operation.divide(a,b);
     }
 }
 
@@ -86,14 +90,16 @@ function storeValue(e) {
     }
 
     if (firstNum) {
-    operatorValue = e.target.id;
-    display.textContent =`${firstNum} ${operatorValue} `;
-    // // adds dot button for second number
-    dot.addEventListener('click',displayInBox);
+        
+        if (e.key) operatorValue = e.key;
+        else operatorValue = e.target.id;
+
+        display.textContent =`${firstNum} ${operatorValue} `;
+    
     }
-    // console.log(operatorValue);
 }
 
+// produces either firstNum or secondNum
 function numberWrite(array,event) {
     // prevents more than one dot from being included
     if (array.includes('.') && event.target.id === 'dot' ||
