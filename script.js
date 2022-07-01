@@ -5,6 +5,7 @@ const buttonOperator = buttonBox.getElementsByClassName('button operator');
 const buttonClear = buttonBox.querySelector('.clear');
 const display = document.createElement('div');
 const answerDisplay = document.createElement('div');
+
 let array = [];
 let arrayTwo = [];
 let secondNum;
@@ -23,6 +24,7 @@ for (const button of buttonOperator) {
 document.addEventListener('keydown', (e) => {
     const keyNumber = document.querySelector(`.number[data-key='${e.key}']`);
     const keyOperator = document.querySelector(`.operator[data-key='${e.key}']`);
+    
     if (keyNumber) displayInBox(e);
     if (keyOperator) storeValue(e);
 })
@@ -74,7 +76,6 @@ function displayInBox(e) {
     }
 
     displayBox.appendChild(display);
-    // console.log(number,firstNum);
 }
 
 // store values when operator button is clicked
@@ -85,17 +86,14 @@ function storeValue(e) {
         if (typeof answer === 'number') firstNum = answer;
         secondNum = null;
         array = [];
-        arrayTwo = [];
-        // displayBox.appendChild(answerDisplay);        
+        arrayTwo = [];    
     }
 
     if (firstNum) {
-        
         if (e.key) operatorValue = e.key;
         else operatorValue = e.target.id;
 
         display.textContent =`${firstNum} ${operatorValue} `;
-    
     }
 }
 
