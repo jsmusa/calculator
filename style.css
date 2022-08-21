@@ -88,3 +88,15 @@
     border-radius: 50%;
     font-family: 'Rajdhani', sans-serif;
 }
+
+#footer {
+    width: 100%;
+    background-color: rgb(51, 48, 48) ;
+    color: #ffffff;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
