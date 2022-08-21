@@ -4,9 +4,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Rajdhani', sans-serif;
+    box-sizing: border-box;
 }
 
 #calculator-box {
+    background-color: rgb(200, 207, 207);
     border: 2px solid #000;
     border-radius: 5%;
     display: flex;
@@ -19,9 +22,26 @@
 }
 
 #display-box {
+    background-color: aliceblue;
     height: 80px;
     width: 80%;
     border: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
+
+#display-box .writing {
+    font-size: 20px;
+    color: rgb(97, 95, 95);
+}
+
+#display-box .answer {  
+    display: flex;
+    font-size: 30px;
+    flex: 1;
+    align-self: flex-end;
+    align-items: flex-end;
 }
 
 #button-box {
@@ -35,6 +55,7 @@
     flex-wrap: wrap;
     width: 80%;
     gap: 8px;
+    
 }
 
 #operator-buttons {
@@ -48,9 +69,15 @@
     width: 30%;
     height: auto;
     border-radius: 5%;
+    font-size: 24px;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .button.operator, .button.clear, .button#backspace {
+    background-color: rgb(107, 104, 104);
+    color: #ffffff;
+    font-size: 24px;
     height: 15%;
     border-radius: 50%;
+    font-family: 'Rajdhani', sans-serif;
 }
