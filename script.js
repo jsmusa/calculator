@@ -90,9 +90,7 @@ function storeValue(e) {
     }
 
     if (firstNum) {
-        if (e.key) operatorValue = e.key;
-        else operatorValue = e.target.id;
-
+        operatorValue = e.key || e.target.id;
         display.textContent =`${firstNum} ${operatorValue} `;
     }
 }
