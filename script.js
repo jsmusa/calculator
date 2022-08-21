@@ -3,8 +3,8 @@ const displayBox = document.getElementById('display-box');
 const buttonNumber = buttonBox.getElementsByClassName('button number');
 const buttonOperator = buttonBox.getElementsByClassName('button operator');
 const buttonClear = buttonBox.querySelector('.clear');
-const display = document.createElement('div');
-const answerDisplay = document.createElement('div');
+const display = document.querySelector('.writing');
+const answerDisplay = document.querySelector('.answer');
 
 let array = [];
 let arrayTwo = [];
@@ -35,6 +35,7 @@ buttonClear.addEventListener('click',() => {
     array = [];
     attayTwo = [];
     display.textContent = '';
+    answerDisplay.textContent = '';
 })
 
 // calculator operation functions
@@ -74,8 +75,6 @@ function displayInBox(e) {
         secondNum = numberWrite(arrayTwo,e);
         display.textContent =`${firstNum} ${operatorValue} ${secondNum}`;
     }
-
-    displayBox.appendChild(display);
 }
 
 // store values when operator button is clicked
@@ -83,10 +82,14 @@ function storeValue(e) {
     // operate when secondNum is defined and an operator button is clicked
     if (secondNum) {
         answer = operate(+firstNum,+secondNum,operatorValue);
-        if (typeof answer === 'number') firstNum = answer;
+        if (typeof answer === 'number') {
+            firstNum = answer;
+            answerDisplay.textContent = answer;
+        }
         secondNum = null;
         array = [];
-        arrayTwo = [];    
+        arrayTwo = [];
+    
     }
 
     if (firstNum) {
